@@ -24,7 +24,7 @@ import iconUser from './assets/user.png'
 import iconUser_ from './assets/user_.png'
 
 import Home from './views/Home'
-import Profile from './views/Profile'
+import Blank from './views/Blank'
 import Details from './views/Details';
 
 const Stack = createNativeStackNavigator();
@@ -84,7 +84,7 @@ export const HomePage = () => {
                 justifyContent: 'center',
                 padding: 20
               }}
-              onPress={() => Alert.alert('Click Action')}>
+              onPress={() => navigate('new')}>
               <Image source={iconBookClose} style={styles.imgIcon} />
             </TouchableOpacity>
           </Animated.View>
@@ -102,29 +102,20 @@ export const HomePage = () => {
         <CurvedBottomBar.Screen
           name="explore"
           position="LEFT"
-          options={{
-            headerShown: false
-          }}
         >
-          {props => <Profile {...props} />}
+          {props => <Blank {...props} />}
         </CurvedBottomBar.Screen>
         <CurvedBottomBar.Screen
           name="diamond"
           position="RIGHT"
-          options={{
-            headerShown: false
-          }}
         >
-          {props => <Profile {...props} />}
+          {props => <Blank {...props} />}
         </CurvedBottomBar.Screen>
         <CurvedBottomBar.Screen
           name="profile"
           position="RIGHT"
-          options={{
-            headerShown: false
-          }}
         >
-          {props => <Profile {...props} />}
+          {props => <Blank {...props} />}
         </CurvedBottomBar.Screen>
       </CurvedBottomBar.Navigator>
     </View>
@@ -166,9 +157,9 @@ function App(props) {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
-          animation: 'slide_from_right',
+          animation: 'slide_from_bottom',
           headerStyle: {
-            backgroundColor: '#ffdd16'
+            backgroundColor: '#65c1cb'
           },
           headerTintColor: '#000',
 
@@ -187,6 +178,10 @@ function App(props) {
           options={{
             headerShown: false
           }}
+        />
+        <Stack.Screen
+          name="new"
+          component={Blank}
         />
       </Stack.Navigator>
     </NavigationContainer>
