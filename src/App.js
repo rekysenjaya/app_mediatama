@@ -1,17 +1,11 @@
-import React, { useEffect } from 'react';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { CurvedBottomBar } from 'react-native-curved-bottom-bar';
-import { Dimensions, Text, View, Image, TouchableOpacity, ActivityIndicator, Modal, StyleSheet, Animated, Alert } from 'react-native';
+import { View, Image, TouchableOpacity, StyleSheet, Animated } from 'react-native';
 import { enableScreens } from 'react-native-screens';
-import { useDispatch, useSelector } from 'react-redux';
 
 enableScreens(false);
-
-import * as actionAuth from './actions/actionAuth';
-import * as actionBooks from './actions/actionBooks';
-
-import Config from './constants/Config';
 
 import iconHome from './assets/home.png'
 import iconHome_ from './assets/home_.png'
