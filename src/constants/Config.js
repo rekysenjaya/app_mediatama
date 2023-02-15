@@ -1,4 +1,19 @@
+import imgFantasi from '../assets/fantasi.png'
+import imgAksi from '../assets/aksi.png'
+import imgKeluarga from '../assets/keluarga.png'
+import imgMisteri from '../assets/misteri.png'
+import imgRomansa from '../assets/romansa.png'
+import imgSastra from '../assets/sastra.png'
+
 const category = ['Romansa', 'Kehidupan', 'Fantasi', 'Aksi', 'Petualangan', 'Kesedihan', 'Other Tag']
+const categoryFull = [
+  { name: 'Romansa', img: imgRomansa },
+  { name: 'Fantasi', img: imgFantasi },
+  { name: 'Misteri', img: imgMisteri },
+  { name: 'Sastra', img: imgSastra },
+  { name: 'Aksi', img: imgAksi },
+  { name: 'Keluarga', img: imgKeluarga }
+]
 
 const getRndInteger = (min, max) => {
   return Number(Math.random() * (max - min) + min).toFixed(1);
@@ -23,6 +38,7 @@ export default {
   URL_API: `https://www.googleapis.com/`,
   createObjectToParams,
   category,
+  categoryFull,
   getRndInteger
 }
 

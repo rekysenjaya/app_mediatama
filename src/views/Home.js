@@ -7,6 +7,7 @@ import iconGift from '../assets/gift.png'
 import iconNotif from '../assets/bell.png'
 
 import CardList from '../components/cardList';
+import CardTags from '../components/cardTags';
 
 const { height } = Dimensions.get('window')
 
@@ -47,6 +48,7 @@ const Home = props => {
         {useMemo(() => <View key={state.dateNow} style={styles.scrollView}>
           <CardList keys="new" category="Baru Rilis" newest />
           <CardList keys="newChapter" category="Chapter Baru Setiap Hari" newest typeGrid="grid" />
+          <CardTags category="Kategory" />
           <CardList keys="fullChapter" category="Cerita Lengkap" newest typeGrid="vertical" />
           <CardList keys="ekslusif" category="Ekslusif" newest />
           <CardList keys="rekomendasi" category="Rekomendasi" newest />

@@ -1,19 +1,45 @@
 import React, { memo } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Image } from 'react-native';
 
 import Config from '../constants/Config';
 
-const Tags = (props) => {
-  return <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.tagsScroll} >
-    {Config.category.map((value, index) => <TouchableOpacity key={`${value},${index}`}>
-      <View style={[styles.tagsCard, { marginLeft: index ? 0 : 20 }]} >
-        <Text style={styles.tagsCardText} >{value}</Text>
+const Tags = ({ category }) => {
+  return <View>
+    {!!category && <View style={styles.cardTitle} >
+      <Text style={styles.cardTitleText} >{category}</Text>
+    </View>}
+    {!!category ?
+      <View style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', paddingLeft: 20, marginTop: -10 }} >
+        {Config.categoryFull.map((value, index) => <TouchableOpacity key={`${value},${index}`}>
+          <View style={styles.tagsCardFull} >
+            <Image source={value.img} style={{ width: 20, height: 20, resizeMode: 'contain', marginRight: 10 }} />
+            <Text style={styles.tagsCardText} >{value.name}</Text>
+          </View>
+        </TouchableOpacity>)}
       </View>
-    </TouchableOpacity>)}
-  </ScrollView>
+      :
+      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.tagsScroll} >
+        {Config.category.map((value, index) => <TouchableOpacity key={`${value},${index}`}>
+          <View style={[styles.tagsCard, { marginLeft: index ? 0 : 20 }]} >
+            <Text style={styles.tagsCardText} >{value}</Text>
+          </View>
+        </TouchableOpacity>)}
+      </ScrollView>}
+  </View>
 }
 
 const styles = StyleSheet.create({
+  cardTitle: {
+    borderColor: '#3994a9',
+    borderLeftWidth: 5,
+    margin: 20,
+    paddingLeft: 8
+  },
+  cardTitleText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#000'
+  },
   tagsScroll: {
     display: 'flex',
     flexDirection: 'row',
@@ -27,6 +53,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderRadius: 15,
     marginRight: 10
+  },
+  tagsCardFull: {
+    backgroundColor: '#f3f3f3',
+    padding: 5,
+    paddingHorizontal: 10,
+    borderRadius: 25,
+    marginRight: 10,
+    marginTop: 10,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center'
   },
   tagsCardText: {
     color: '#000',
