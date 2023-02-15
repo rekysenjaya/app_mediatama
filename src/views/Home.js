@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import { View, Image, Dimensions, ScrollView, TouchableOpacity, Modal, TouchableWithoutFeedback, TextInput, StyleSheet, RefreshControl } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -44,11 +44,13 @@ const Home = props => {
           <Image source={iconGift} style={styles.iconGift} />
           <Image source={iconNotif} style={styles.iconNotif} />
         </View>
-        <View key={state.dateNow} style={styles.scrollView}>
+        {useMemo(() => <View key={state.dateNow} style={styles.scrollView}>
           <CardList keys="new" category="Baru Rilis" newest />
+          <CardList keys="newChapter" category="Chapter Baru Setiap Hari" newest typeGrid="grid" />
+          <CardList keys="fullChapter" category="Cerita Lengkap" newest typeGrid="vertical" />
           <CardList keys="ekslusif" category="Ekslusif" newest />
           <CardList keys="rekomendasi" category="Rekomendasi" newest />
-        </View>
+        </View>, [state.dateNow])}
       </ScrollView>
       <Modal
         style={{ height }}

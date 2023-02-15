@@ -13,7 +13,7 @@ import CardRate from '../components/cardRate';
 
 const { height } = Dimensions.get('window')
 
-const CardRecommend = memo((props) => {
+const CardRecommend = memo(({ inDetail = false }) => {
   const navigation = useNavigation()
   const [showListRecommend, setShowListRecommend] = useState(false)
 
@@ -29,7 +29,7 @@ const CardRecommend = memo((props) => {
 
   return showListRecommend && <Fragment>
     <Text style={styles.titleRecommend} >Rekomendasi</Text>
-    <CardList keys="rekomendasi" fetch={false} />
+    <CardList keys="rekomendasi" fetch={false} inDetail={inDetail} />
   </Fragment>
 })
 
@@ -57,7 +57,7 @@ const Details = ({ route }) => {
           <CardDescription description={item?.volumeInfo?.description} />
           <CardTags />
           <CardComments />
-          <CardRecommend />
+          <CardRecommend inDetail />
         </View>
       </ScrollView>
     </SafeAreaView >

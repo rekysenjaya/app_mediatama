@@ -1,5 +1,9 @@
 const category = ['Romansa', 'Kehidupan', 'Fantasi', 'Aksi', 'Petualangan', 'Kesedihan', 'Other Tag']
 
+const getRndInteger = (min, max) => {
+  return Number(Math.random() * (max - min) + min).toFixed(1);
+}
+
 const createObjectToParams = (data) => {
   let params = ''
   if (Object.keys(data).length) {
@@ -18,6 +22,7 @@ const createObjectToParams = (data) => {
 export default {
   URL_API: `https://www.googleapis.com/`,
   createObjectToParams,
-  category
+  category,
+  getRndInteger
 }
 
