@@ -46,9 +46,9 @@ const Home = props => {
         {useMemo(() => <View key={state.dateNow} style={styles.scrollView}>
           <CardList keys="new" category="Baru Rilis" newest />
           <CardList keys="newChapter" category="Chapter Baru Setiap Hari" newest typeGrid="grid" />
+          <CardList keys="ekslusif" category="Ekslusif" newest />
           <CardTags category="Kategory" />
           <CardList keys="fullChapter" category="Cerita Lengkap" newest typeGrid="vertical" />
-          <CardList keys="ekslusif" category="Ekslusif" newest />
           <CardList keys="rekomendasi" category="Rekomendasi" newest />
         </View>, [state.dateNow])}
       </ScrollView>
