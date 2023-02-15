@@ -9,10 +9,10 @@ const Tags = ({ category }) => {
       <Text style={styles.cardTitleText} >{category}</Text>
     </View>}
     {!!category ?
-      <View style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', paddingLeft: 20, marginTop: -10 }} >
+      <View style={styles.tagsCardFullList} >
         {Config.categoryFull.map((value, index) => <TouchableOpacity key={`${value},${index}`}>
           <View style={styles.tagsCardFull} >
-            <Image source={value.img} style={{ width: 20, height: 20, resizeMode: 'contain', marginRight: 10 }} />
+            <Image source={value.img} style={styles.iconTags} />
             <Text style={styles.tagsCardText} >{value.name}</Text>
           </View>
         </TouchableOpacity>)}
@@ -64,6 +64,19 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center'
+  },
+  tagsCardFullList: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    paddingLeft: 20,
+    marginTop: -10
+  },
+  iconTags: {
+    width: 20,
+    height: 20,
+    resizeMode: 'contain',
+    marginRight: 10
   },
   tagsCardText: {
     color: '#000',

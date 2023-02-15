@@ -1,15 +1,13 @@
 import React, { useState, useCallback, useMemo } from 'react';
-import { View, Image, Dimensions, ScrollView, TouchableOpacity, Modal, TouchableWithoutFeedback, TextInput, StyleSheet, RefreshControl } from 'react-native';
+import { View, Image, ScrollView, TextInput, StyleSheet, RefreshControl, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import iconSearch from '../assets/search.png'
-import iconGift from '../assets/gift.png'
 import iconNotif from '../assets/bell.png'
 
 import CardList from '../components/cardList';
 import CardTags from '../components/cardTags';
-
-const { height } = Dimensions.get('window')
+import GiftSee from '../components/giftSee';
 
 const Home = props => {
   const [state, setState] = useState({
@@ -42,7 +40,7 @@ const Home = props => {
               placeholder='Cari judul novel'
             />
           </View>
-          <Image source={iconGift} style={styles.iconGift} />
+          <GiftSee />
           <Image source={iconNotif} style={styles.iconNotif} />
         </View>
         {useMemo(() => <View key={state.dateNow} style={styles.scrollView}>
@@ -54,25 +52,6 @@ const Home = props => {
           <CardList keys="rekomendasi" category="Rekomendasi" newest />
         </View>, [state.dateNow])}
       </ScrollView>
-      <Modal
-        style={{ height }}
-        visible={false}
-        animationType="none"
-        transparent
-      >
-        <TouchableOpacity
-          activeOpacity={1}
-          style={{ flex: 1, backgroundColor: 'rgba(0,0,0,.2)' }}
-        >
-          <ScrollView showsVerticalScrollIndicator={false}>
-            <TouchableWithoutFeedback>
-              <View style={{ backgroundColor: '#fff', padding: 20, borderRadius: 10, margin: 30, marginBottom: 0 }} >
-
-              </View>
-            </TouchableWithoutFeedback>
-          </ScrollView>
-        </TouchableOpacity>
-      </Modal>
     </SafeAreaView>
   );
 };
@@ -110,12 +89,6 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     marginLeft: 15,
     marginRight: 5
-  },
-  iconGift: {
-    height: 25,
-    width: 25,
-    resizeMode: 'contain',
-    marginHorizontal: 10
   },
   iconNotif: {
     height: 25,

@@ -14,6 +14,7 @@ const categoryFull = [
   { name: 'Aksi', img: imgAksi },
   { name: 'Keluarga', img: imgKeluarga }
 ]
+const giftList = [1, 2, 3, 4, 5, 6, 7]
 
 const getRndInteger = (min, max) => {
   return Number(Math.random() * (max - min) + min).toFixed(1);
@@ -39,6 +40,7 @@ export default {
   createObjectToParams,
   category,
   categoryFull,
-  getRndInteger
+  giftList,
+  getRndInteger,
 }
 
