@@ -1,13 +1,21 @@
-import React, { memo, useCallback, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { memo, useCallback, useEffect, useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Platform } from 'react-native';
 
 const Description = ({ description }) => {
   const [numberLine, setNumberLine] = useState(4);
   const [showMore, setShowMore] = useState(false);
 
   const onTextLayout = useCallback(e => {
-    setShowMore(e.nativeEvent?.lines?.length > 4);
+    if (e.nativeEvent?.lines?.length && Platform.OS === 'android') {
+      setShowMore(e.nativeEvent?.lines?.length > 4);
+    }
   }, []);
+
+  useEffect(() => {
+    if (Platform.OS === 'ios' && description?.length > 100) {
+      setShowMore(true)
+    }
+  }, [])
 
   return <View style={styles.descriptionCard}>
     <Text style={styles.descriptionCardTitle} >Sinopsis</Text>

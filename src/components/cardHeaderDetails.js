@@ -12,7 +12,7 @@ const CardHeaderImage = ({ data }) => {
   const navigation = useNavigation()
 
   return <Fragment>
-    <ImageBackground source={data?.imageLinks?.smallThumbnail ? { uri: data?.imageLinks?.smallThumbnail } : iconNoImage} >
+    <ImageBackground source={data?.imageLinks?.smallThumbnail ? { uri: `${data?.imageLinks?.smallThumbnail}`.replace('http:', 'https:') } : iconNoImage} >
       <View style={styles.imgBgOpacity} >
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <View style={styles.buttonOpacity} >
@@ -22,7 +22,7 @@ const CardHeaderImage = ({ data }) => {
       </View>
     </ImageBackground>
     <View style={styles.cardImage} >
-      <Image source={data?.imageLinks?.smallThumbnail ? { uri: data?.imageLinks?.smallThumbnail } : iconNoImage} style={styles.cardImages} />
+      <Image source={data?.imageLinks?.smallThumbnail ? { uri: `${data?.imageLinks?.smallThumbnail}`.replace('http:', 'https:') } : iconNoImage} style={styles.cardImages} />
       <View style={styles.cardDesc} >
         <Text style={styles.cardDescTitle} numberOfLines={2}>{data?.title}</Text>
         <Text style={styles.cardDescAuthors} numberOfLines={2}>{(data?.authors || []).join(', ')}</Text>

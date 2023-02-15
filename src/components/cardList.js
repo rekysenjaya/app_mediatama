@@ -55,7 +55,7 @@ export const Card = memo(({ item, index, count, typeGrid, inDetail }) => {
         <Image
           source={
             item?.volumeInfo?.imageLinks?.smallThumbnail ?
-              { uri: item?.volumeInfo?.imageLinks?.smallThumbnail }
+              { uri: `${item?.volumeInfo?.imageLinks?.smallThumbnail}`.replace('http:', 'https:') }
               :
               iconNoImage
           }
