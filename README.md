@@ -35,3 +35,25 @@ To Run App Android:
 ```
 npx react-native run-android
 ```
+
+### IOS steps
+
+- Then, run the project in executing on your project folder:
+
+To Install Pods:
+
+```
+cd ios/ && pod install && cd ..
+```
+
+To Start Server:
+
+```
+npm start
+```
+
+To Run App Android:
+
+```
+npx react-native run-ios
+```
